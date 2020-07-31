@@ -22,6 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    //配置kt编译环境
+    kotlinOptions{
+        jvmTarget = 1.8
+    }
 }
 
 dependencies {
