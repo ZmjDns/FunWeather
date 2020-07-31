@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FunWeather</string>
+    <string name="inputAddress">输入地址</string>
 </resources>
