@@ -1,0 +1,21 @@
+package com.zmj.funweather.logic.model
+
+import com.google.gson.annotations.SerializedName
+
+/**
+ * Author : Zmj
+ * Blog : https://blog.csdn.net/Zmj_Dns
+ * GitHub : https://github.com/ZmjDns
+ * Time : 2020/7/31
+ * Description :
+ */
+
+data class RealTimeResponse(val status: String,val result: Result){
+    data class Result(val realtime: RealTime)
+
+    data class RealTime(val skycon: String,val temperature: Float,@SerializedName("air_quality") val airQuality: AirQuality)
+    
+    data class AirQuality(val aqi: AQI)
+    
+    data class AQI(val chn: Float)
+}
