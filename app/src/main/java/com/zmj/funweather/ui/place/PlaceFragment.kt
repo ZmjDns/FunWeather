@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zmj.funweather.MainActivity
@@ -25,7 +27,10 @@ import kotlinx.android.synthetic.main.fragment_place.*
  */
 class PlaceFragment: Fragment() {
 
-    val viewModel by lazy { ViewModelProviders.of(this).get(PlaceViewModel::class.java) }
+    val viewModel by lazy {
+        //ViewModelProviders.of(this).get(PlaceViewModel::class.java)
+        ViewModelProvider.NewInstanceFactory().create(PlaceViewModel::class.java)
+    }
 
     private lateinit var adapter: PlaceAdapter
 
@@ -68,7 +73,7 @@ class PlaceFragment: Fragment() {
             }
         }
 
-        viewModel.placeLiveData.observe(this, Observer { result ->
+        viewModel.placeLiveData.observe(viewLifecycleOwner, Observer { result ->
             val places = result.getOrNull()
             if (places != null){
                 recyclerView.visibility = View.VISIBLE

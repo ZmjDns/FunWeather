@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import com.zmj.funweather.R
@@ -33,7 +34,10 @@ import java.util.*
  */
 class WeatherActivity: AppCompatActivity() {
 
-    val viewModel by lazy { ViewModelProviders.of(this).get(WeatherViewModel::class.java) }
+    val viewModel by lazy {
+//        ViewModelProviders.of(this).get(WeatherViewModel::class.java)
+        ViewModelProvider.NewInstanceFactory().create(WeatherViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
